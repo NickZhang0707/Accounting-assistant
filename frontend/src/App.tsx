@@ -22,7 +22,7 @@ import PowerIcon from '@mui/icons-material/Power';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { Outlet, Link } from 'react-router-dom';
-import { AppBar, Drawer, DrawerHeader } from './Theme/defaultTheme';
+import { AppBar, Drawer, DrawerHeader } from './Theme/defaultTheme.tsx';
 import Fab from '@mui/material/Fab';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
@@ -50,7 +50,7 @@ const App = () => {
 
 
   const linkToPage = (index: number) => {
-    const paths = ['Bills', 'Water', '/Pages/PowerPage', 'Gas', '/Pages/TransportPage'];
+    const paths = ['Bills', 'Water', 'Power', 'Gas', 'Transport'];
     if (index < paths.length) {
       return paths[index];
     }
