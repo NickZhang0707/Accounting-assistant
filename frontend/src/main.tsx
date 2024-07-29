@@ -6,42 +6,35 @@ import {
   
 } from "react-router-dom";
 import App from './App';
-import BillsPage from './Pages/BillsPage';
-import WaterPage from './Pages/WaterBillPage';
-import PowerPage from './Pages/PowerBillPage';
-import TransportPage from './Pages/TransportBillPage';
-import GasPage from './Pages/GasPage'
-import MainPage from './Pages/MainPage';
+import MainPageComponents from './Components/MainPageComponents';
+import BillsPageComponents from './Components/BillsPageComponents';
+import GasPageComponents from './Components/GasPageComponents';
+import WaterPageComponents from './Components/WaterPageComponents';
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/pages/mainpage",
-    element: <MainPage />,
-  },
-  {
-    path: "/pages/billspage",
-    element: <BillsPage />,
-  },
-  {
-    path: "/pages/waterpage",
-    element: <WaterPage />,
-  },
-  {
-    path: "/pages/powerpage",
-    element: <PowerPage />,
-  },
-  {
-    path: "/pages/transportpage",
-    element: <TransportPage />,
-  },
-  {
-    path: "/pages/gaspage",
-    element: <GasPage />,
+    children: [
+      {
+        index: true,
+        element: <MainPageComponents />,
+      },
+      {
+        path: "Bills",
+        element: <BillsPageComponents />,
+      },
+      {
+        path: "Water",
+        element: <WaterPageComponents />,
+      },
+      {
+        path: "Gas",
+        element: <GasPageComponents />,
+      }
+    ],
   }
 ]);
 
