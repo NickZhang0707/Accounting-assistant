@@ -14,8 +14,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import EditIcon from '@mui/icons-material/Edit';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import PowerIcon from '@mui/icons-material/Power';
@@ -23,6 +23,7 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { Outlet, Link } from 'react-router-dom';
 import { AppBar, Drawer, DrawerHeader } from './Theme/defaultTheme.tsx';
+import AiButton from './Components/AiButton.tsx';
 
 
 
@@ -120,9 +121,11 @@ const App = () => {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Add new bills', 'Edit details'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                component={Link}
+                to={index % 2 === 0 ? 'AddBills' : 'EditDetails'}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -136,7 +139,7 @@ const App = () => {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <FileUploadIcon /> : <EditIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -153,9 +156,18 @@ const App = () => {
       {sideNavBar()}
       <Box component="main" sx={{ flexGrow: 1, p: 4, mt: -8 }}>
         <Outlet />
-      </Box>      
+      </Box>
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: 50,
+          right: 50,
+          zIndex: 1000, 
+        }}
+      >
+        <AiButton />
+      </Box> 
     </Box>
-    
   );
 };
 

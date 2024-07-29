@@ -17,13 +17,13 @@ const MainPageComponents = () => {
         Fuuuuuuck main
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={4} sm={12}>
           <LineChart />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} sm={6}>
           <PieChart />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} sm={4}>
           <NeedToPayCard />
         </Grid>
         <Grid item xs={12}>

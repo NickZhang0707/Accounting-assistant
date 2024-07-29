@@ -12,7 +12,8 @@ import GasPageComponents from './Components/GasPageComponents';
 import WaterPageComponents from './Components/WaterPageComponents';
 import TransportPageComponents from './Components/TransportPageComponents';
 import PowerPageComponents from './Components/PowerPageComponents';
-
+import AddBillsPageComponents from './Components/AddBillsPageComponents';
+import EditDetailsPageComponents from './Components/EditDetailsPageComponents';
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "Power",
         element: <PowerPageComponents />,
+      },
+      {
+        path: "AddBills",
+        element: <AddBillsPageComponents />,
+      },
+      {
+        path: "EditDetails",
+        element: <EditDetailsPageComponents />,
       }
     ],
   }
