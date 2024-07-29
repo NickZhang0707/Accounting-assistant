@@ -23,31 +23,32 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import { Outlet, Link } from 'react-router-dom';
 import { AppBar, Drawer, DrawerHeader } from './Theme/defaultTheme.tsx';
-import Fab from '@mui/material/Fab';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 
-const switchSideNavP1Icon = (index: number) => {
-  switch (index) {
-    case 0:
-      return <ReceiptLongIcon />;
-    case 1:
-      return <WaterDropIcon />;
-    case 2:
-      return <PowerIcon />;
-    case 3:
-      return <LocalFireDepartmentIcon />;
-    case 4:
-      return <DirectionsCarIcon />;
-    default:
-      return null;
-  }
-}
 
 const App = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
+
+  const switchSideNavP1Icon = (index: number) => {
+    switch (index) {
+      case 0:
+        return <ReceiptLongIcon />;
+      case 1:
+        return <WaterDropIcon />;
+      case 2:
+        return <PowerIcon />;
+      case 3:
+        return <LocalFireDepartmentIcon />;
+      case 4:
+        return <DirectionsCarIcon />;
+      default:
+        return null;
+    }
+  }
 
   const linkToPage = (index: number) => {
     const paths = ['Bills', 'Water', 'Power', 'Gas', 'Transport'];
@@ -56,9 +57,6 @@ const App = () => {
     }
     return '/';
   };
-
-  const handleDrawerOpen = () => setOpen(true);
-  const handleDrawerClose = () => setOpen(false);
 
   const sideNavBar = () => (
     <>
@@ -155,11 +153,9 @@ const App = () => {
       {sideNavBar()}
       <Box component="main" sx={{ flexGrow: 1, p: 4, mt: -8 }}>
         <Outlet />
-      </Box>
-      <Fab color="primary" aria-label="add">
-        <AutoAwesomeIcon />
-      </Fab>
+      </Box>      
     </Box>
+    
   );
 };
 
