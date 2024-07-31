@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
+import FileUpload from './FileUpload';
 
 
 const FormGrid = styled(Grid)(() => ({
@@ -31,7 +32,7 @@ export default function AddBillsForm() {
   return (
     <Box component="form" sx={{ flexGrow: 1, p: 3, mt: 9 }}>
         <Grid container spacing={3}>
-            <FormGrid item xs={12}>
+            <FormGrid item xs={12} md={6}>
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
@@ -39,6 +40,9 @@ export default function AddBillsForm() {
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Bills" required />}
                 />
+            </FormGrid>
+            <FormGrid item xs={12} md={3}>
+                <FileUpload />
             </FormGrid>
             <FormGrid item xs={12} md={6}>
                 <FormLabel htmlFor="Amount" required>

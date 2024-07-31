@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
+import FileUpload from './FileUpload';
 
 
 const FormGrid = styled(Grid)(() => ({
@@ -22,128 +23,111 @@ const BillsLable = [
     { label: 'Transport', value: 'transport' },
 ];
 
-export default function AddressForm() {
+const PaymentStatus = [
+  { label: 'Paid', value: 'paid' },
+  { label: 'Unpaid', value: 'unpaid' },
+];
+
+export default function AddBillsForm() {
   return (
     <Box component="form" sx={{ flexGrow: 1, p: 3, mt: 9 }}>
         <Grid container spacing={3}>
-            <FormGrid item xs={12}>
+            <FormGrid item xs={12} md={6}>
                 <Autocomplete
                     disablePortal
                     id="combo-box-demo"
                     options={BillsLable}
                     sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Bills" />}
+                    renderInput={(params) => <TextField {...params} label="Bills" required />}
                 />
             </FormGrid>
-            <FormGrid item xs={12} md={6}>
-                <FormLabel htmlFor="first-name" required>
-                First name
-                </FormLabel>
-                <OutlinedInput
-                id="first-name"
-                name="first-name"
-                type="name"
-                placeholder="John"
-                autoComplete="first name"
-                required
-                />
+            <FormGrid item xs={12} md={3}>
+                <FileUpload />
             </FormGrid>
             <FormGrid item xs={12} md={6}>
-                <FormLabel htmlFor="last-name" required>
-                Last name
+                <FormLabel htmlFor="Amount" required>
+                Amount NZD
                 </FormLabel>
                 <OutlinedInput
-                id="last-name"
-                name="last-name"
-                type="last-name"
-                placeholder="Snow"
-                autoComplete="last name"
+                id="Amount"
+                name="Amount"
+                type="Amount"
+                placeholder="number only"
+                autoComplete="Amount"
                 required
                 />
             </FormGrid>
             <FormGrid item xs={12} md={6}>
-                <FormLabel htmlFor="address1" required>
-                Address line 1
+                
+            </FormGrid>
+            <FormGrid item xs={12} md={6}>
+                <FormLabel htmlFor="StartDate" required>
+                Start Date
                 </FormLabel>
                 <OutlinedInput
-                id="address1"
-                name="address1"
-                type="address1"
-                placeholder="Street name and number"
-                autoComplete="shipping address-line1"
+                id="StartDate"
+                name="StartDate"
+                type="StartDate"
+                placeholder="DD/MM/YYYY"
+                autoComplete="DD/MM/YYYY"
                 required
                 />
             </FormGrid>
             <FormGrid item xs={12} md={6}>
-                <FormLabel htmlFor="address2">Address line 2</FormLabel>
+                <FormLabel htmlFor="DueDate" required>
+                Due Date
+                </FormLabel>
                 <OutlinedInput
-                id="address2"
-                name="address2"
-                type="address2"
-                placeholder="Apartment, suite, unit, etc. (optional)"
-                autoComplete="shipping address-line2"
+                id="DueDate"
+                name="DueDate"
+                type="DueDate"
+                placeholder="DD/MM/YYYY"
+                autoComplete="DD/MM/YYYY"
                 required
                 />
             </FormGrid>
             <FormGrid item xs={6}>
-                <FormLabel htmlFor="city" required>
-                City
+                <FormLabel htmlFor="Kwh">
+                Kwh
                 </FormLabel>
                 <OutlinedInput
-                id="city"
-                name="city"
-                type="city"
-                placeholder="New York"
-                autoComplete="City"
+                id="Kwh"
+                name="Kwh"
+                type="Kwh"
+                placeholder="number only"
+                autoComplete="Kwh"
                 required
                 />
             </FormGrid>
             <FormGrid item xs={6}>
-                <FormLabel htmlFor="state" required>
-                State
+                <FormLabel htmlFor="PricePerKwh">
+                Price Per Kwh
                 </FormLabel>
                 <OutlinedInput
-                id="state"
-                name="state"
-                type="state"
-                placeholder="NY"
-                autoComplete="State"
-                required
+                id="PricePerKwh"
+                name="PricePerKwh"
+                type="PricePerKwh"
+                placeholder="number only"
+                autoComplete="PricePerKwh"
                 />
             </FormGrid>
-            <FormGrid item xs={6}>
-                <FormLabel htmlFor="zip" required>
-                Zip / Postal code
-                </FormLabel>
-                <OutlinedInput
-                id="zip"
-                name="zip"
-                type="zip"
-                placeholder="12345"
-                autoComplete="shipping postal-code"
-                required
-                />
-            </FormGrid>
-            <FormGrid item xs={6}>
-                <FormLabel htmlFor="country" required>
-                Country
-                </FormLabel>
-                <OutlinedInput
-                id="country"
-                name="country"
-                type="country"
-                placeholder="United States"
-                autoComplete="shipping country"
-                required
-                />
+            <FormGrid item xs={5}>
+              <Autocomplete
+                    disablePortal
+                    id="PaymentStatus"
+                    options={PaymentStatus}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="PaymentStatus" required /> }
+                  />
             </FormGrid>
             <FormGrid item xs={2}>
                 <Button 
                     size='large' 
                     variant="contained" 
                     startIcon={<CheckIcon />}
+                    sx={{ mt: 1 }}
                 >
-                    Update
+                    UPDATE!
                 </Button>
             </FormGrid>
         </Grid>
